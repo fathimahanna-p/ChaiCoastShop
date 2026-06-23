@@ -644,6 +644,37 @@ textarea:focus {
     transform: scale(1.1);
 }
 
+/* --- MOBILE MENU --- */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 100;
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-cream);
+    transition: var(--transition-smooth);
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .menu-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
@@ -654,11 +685,52 @@ textarea:focus {
     .vision-container, .footer-container { grid-template-columns: 1fr; }
     .franchise-form { grid-template-columns: 1fr; }
     .menu-grid, .reviews-grid, .locations-grid { grid-template-columns: 1fr; }
+    
+    /* Hero section responsive fixes */
     .hero-title { font-size: 3rem; }
-    .section-title { font-size: 2rem; }
-}
+    .hero-subtitle { font-size: 1.2rem; }
+    .hero-split {
+        grid-template-columns: 1fr;
+        padding: 0 2rem 2rem 2rem;
+        text-align: center;
+        gap: 2rem;
+        align-content: center;
+    }
+    .hero-text-col {
+        align-items: center;
+        text-align: center;
+    }
+    .hero-visual-frame {
+        max-width: 300px;
+    }
 
-@media (max-width: 768px) {
+    /* Mobile Nav */
+    .hero-nav {
+        justify-content: flex-end;
+    }
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    .hero-nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background-color: var(--color-dark-brown);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: var(--transition-smooth);
+        z-index: 99;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    }
+    .hero-nav ul.active {
+        right: 0;
+    }
+
+    .section-title { font-size: 2rem; }
     .maps-container {
         grid-template-columns: 1fr;
     }

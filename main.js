@@ -1,6 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     initHeroAnimation();
+    initMobileMenu();
 });
+
+function initMobileMenu() {
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const navList = document.getElementById('nav-list');
+
+    if (menuToggle && navList) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        navList.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navList.classList.remove('active');
+            });
+        });
+    }
+}
 
 function initHeroAnimation() {
     const canvas = document.getElementById('hero-canvas');
